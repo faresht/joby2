@@ -73,7 +73,7 @@ const Navbar = () => {
             </IconButton>
             <IconButton
                 component={Link}
-                to="/admin"
+                to="/admin/dashboard"
                 sx={location.pathname.startsWith('/admin') ? activeStyle : {}}
             >
               <AdminPanelSettings />
