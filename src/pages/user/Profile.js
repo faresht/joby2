@@ -10,7 +10,7 @@ const userData = {
   lastName: 'Ben Ahmed',
   title: 'Développeur Frontend',
   location: 'Tunis, Tunisie',
-  email: 'amine.benahmed@example.com',
+  email: 'amine.benahmed@gmail.com',
   phone: '+216 50 123 456',
   about: 'Développeur passionné avec plus de 3 ans d\'expérience dans le développement frontend. Spécialisé en React, JavaScript et CSS.',
   skills: ['React', 'JavaScript', 'HTML/CSS', 'Vue.js', 'Sass', 'Git', 'Bootstrap'],
