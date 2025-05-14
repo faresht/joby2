@@ -48,6 +48,7 @@ import AdminDashboard from './pages/admin/AdminDashboard.js';
 import UsersList from './pages/admin/UsersList.js';
 import CompaniesList from "./pages/admin/CompaniesList.js"
 import ComplaintsList from "./pages/admin/ComplaintsList.js";
+import JobsList from './pages/admin/JobsList.js';
 
 import Performance from "./pages/Perfomance/Perfomance.js"
 // Thème personnalisé blanc et bleu
@@ -117,6 +118,7 @@ function App() {
             <Route path="/admin/users" element={<UsersList />} />
             <Route path="/admin/companies" element={<CompaniesList />} />
             <Route path="/admin/complaints" element={<ComplaintsList />} />
+            <Route path="/admin/jobs" element={<JobsList />} />
           </Routes>
         </div>
         <Footer />

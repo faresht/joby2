@@ -4,7 +4,6 @@ import { Edit, Delete, Visibility, Search, FilterList } from '@mui/icons-materia
 import { Link } from 'react-router-dom';
 
 // Données fictives pour les utilisateurs
-// Données fictives pour les utilisateurs avec des noms arabes
 const usersData = [
   { id: 1, name: 'Ahmed Ben Ali', email: 'ahmed.benali@example.com', type: 'user', status: 'active', registrationDate: '2023-05-01' },
   { id: 2, name: 'Fatima Zahra', email: 'fatima.zahra@example.com', type: 'user', status: 'active', registrationDate: '2023-05-02' },
