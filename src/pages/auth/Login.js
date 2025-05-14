@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container, Typography, TextField, Button, Paper, Box, FormControlLabel, Checkbox, Grid, Link as MuiLink } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const RECAPTCHA_SITE_KEY = '6Le8cjkrAAAAALbk7pAd07msGmEg8TKM8tRAMzwW'; // Replace this with your actual site key
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false,
-    userType: 'user' // 'user' ou 'company'
+    userType: 'user'
   });
   const [errors, setErrors] = useState({});
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+
+  const recaptchaRef = useRef(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -39,9 +45,20 @@ const Login = () => {
     if (!formData.password) {
       newErrors.password = 'Le mot de passe est requis';
     }
-    
+
+    if (!captchaVerified) {
+      newErrors.captcha = 'Veuillez valider le CAPTCHA';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleCaptchaChange = (value) => {
+    setCaptchaVerified(!!value);
+    if (value) {
+      setErrors(prev => ({ ...prev, captcha: undefined }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -123,6 +140,19 @@ const Login = () => {
               }
               label="Se souvenir de moi"
             />
+
+            {/* CAPTCHA */}
+            <Box sx={{ mt: 2, mb: 1 }}>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_SITE_KEY}
+                onChange={handleCaptchaChange}
+              />
+              {errors.captcha && (
+                <Typography color="error" variant="body2">{errors.captcha}</Typography>
+              )}
+            </Box>
+
             <Button
               type="submit"
               fullWidth
@@ -131,12 +161,14 @@ const Login = () => {
             >
               Se connecter
             </Button>
+            
             <Grid container>
               <Grid item xs>
                 <MuiLink component={Link} to="/forgot-password" variant="body2">
                   Mot de passe oublié?
                 </MuiLink>
               </Grid>
+              
               <Grid item>
                 <MuiLink component={Link} to="/register" variant="body2">
                   {"Pas de compte? S'inscrire"}
