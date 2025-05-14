@@ -29,7 +29,6 @@ import {
 import { Visibility, Search, FilterList, Reply, Check, Close } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 
-// Données fictives pour les réclamations
 const complaintsData = [
   {
     id: 1,
@@ -37,12 +36,12 @@ const complaintsData = [
     category: "Offre d'emploi",
     user: {
       id: 1,
-      name: "Thomas Dubois",
+      name: "Amine Ben Ali",
     },
     date: "2023-05-15",
     status: "pending",
     description:
-      "J'ai postulé à une offre d'emploi qui semble frauduleuse. L'entreprise demande des informations personnelles avant même un entretien.",
+        "J'ai postulé à une offre d'emploi qui semble frauduleuse. L'entreprise demande des informations personnelles avant même un entretien.",
   },
   {
     id: 2,
@@ -50,12 +49,12 @@ const complaintsData = [
     category: "Recruteur",
     user: {
       id: 2,
-      name: "Julie Lefebvre",
+      name: "Khaled Baccouche",
     },
     date: "2023-05-10",
     status: "in_progress",
     description:
-      "Lors d'un entretien, le recruteur a posé des questions discriminatoires concernant ma situation familiale.",
+        "Lors d'un entretien, le recruteur a posé des questions discriminatoires concernant ma situation familiale.",
   },
   {
     id: 3,
@@ -63,25 +62,25 @@ const complaintsData = [
     category: "Technique",
     user: {
       id: 3,
-      name: "Sophie Martin",
+      name: "Hiba Jouini",
     },
     date: "2023-05-05",
     status: "resolved",
     description:
-      "Je n'arrive pas à soumettre ma candidature pour l'offre #12345. Le système affiche une erreur à chaque tentative.",
+        "Je n'arrive pas à soumettre ma candidature pour l'offre #12345. Le système affiche une erreur à chaque tentative.",
   },
   {
     id: 4,
     title: "Avis frauduleux sur mon entreprise",
     category: "Avis",
     user: {
-      id: 6,
-      name: "TechCorp",
+      id: 5,
+      name: "CreativeMinds",
     },
     date: "2023-05-12",
     status: "pending",
     description:
-      "Plusieurs avis négatifs ont été publiés sur notre entreprise par ce qui semble être la même personne utilisant différents comptes.",
+        "Plusieurs avis négatifs ont été publiés sur notre entreprise par ce qui semble être la même personne utilisant différents comptes.",
   },
   {
     id: 5,
@@ -89,14 +88,14 @@ const complaintsData = [
     category: "Technique",
     user: {
       id: 4,
-      name: "Marc Dupont",
+      name: "Mehdi Gharbi",
     },
     date: "2023-05-08",
     status: "rejected",
     description:
-      "L'application mobile ne fonctionne pas correctement sur mon appareil Android. Les offres ne s'affichent pas.",
+        "L'application mobile ne fonctionne pas correctement sur mon appareil Android. Les offres ne s'affichent pas.",
   },
-]
+];
 
 const ComplaintsList = () => {
   const [page, setPage] = useState(0)

@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
-    firstName: 'Thomas',
-    lastName: 'Dubois',
-    title: 'Développeur Full Stack',
-    location: 'Paris, France',
-    email: 'thomas.dubois@example.com',
-    phone: '+33 6 12 34 56 78',
-    about: 'Développeur passionné avec plus de 5 ans d\'expérience dans le développement web. Spécialisé en React, Node.js et bases de données SQL/NoSQL.',
-    skills: ['React', 'Node.js', 'JavaScript', 'TypeScript', 'MongoDB', 'Express', 'HTML/CSS', 'Git'],
-    linkedin: 'https://linkedin.com/in/thomasdubois',
-    github: 'https://github.com/thomasdubois',
-    portfolio: 'https://thomasdubois.com'
+    firstName: 'Amine',
+    lastName: 'Ben Ali',
+    title: 'Développeur Web',
+    location: 'Tunis, Tunisie',
+    email: 'amine.benali@example.com',
+    phone: '+216 55 44 33 22',
+    about: 'Développeur web passionné avec plus de 4 ans d\'expérience, spécialisé en React et Node.js. Toujours à la recherche de nouveaux défis et technologies à explorer.',
+    skills: ['React', 'Node.js', 'JavaScript', 'MongoDB', 'Express', 'HTML/CSS', 'Git', 'Docker'],
+    linkedin: 'https://linkedin.com/in/aminebenali',
+    github: 'https://github.com/aminebenali',
+    portfolio: 'https://aminebenali.dev'
   });
 
   const [newSkill, setNewSkill] = useState('');

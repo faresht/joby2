@@ -4,58 +4,60 @@ import { Link } from 'react-router-dom';
 import { Work, LocationOn, AccessTime } from '@mui/icons-material';
 
 // Données fictives pour les offres d'emploi
+
 const jobsData = [
   {
     id: 1,
     title: 'Développeur Frontend React',
-    company: 'TechCorp',
-    location: 'Paris',
+    company: 'TunisTech',
+    location: 'Tunis',
     type: 'CDI',
-    salary: '45K - 55K €',
+    salary: '2,500 TND - 3,500 TND',
     date: '2023-05-10',
-    description: 'Nous recherchons un développeur frontend expérimenté pour rejoindre notre équipe...'
+    description: 'Nous recherchons un développeur frontend expérimenté pour rejoindre notre équipe à Tunis...'
   },
   {
     id: 2,
     title: 'Développeur Backend Node.js',
-    company: 'WebSolutions',
-    location: 'Lyon',
+    company: 'SfaxDigital',
+    location: 'Sfax',
     type: 'CDI',
-    salary: '50K - 60K €',
+    salary: '2,800 TND - 3,800 TND',
     date: '2023-05-08',
-    description: 'Rejoignez notre équipe pour développer des API performantes...'
+    description: 'Rejoignez notre équipe à Sfax pour développer des API performantes et innovantes...'
   },
   {
     id: 3,
     title: 'Designer UX/UI',
-    company: 'DesignStudio',
-    location: 'Marseille',
+    company: 'DesignTunis',
+    location: 'Tunis',
     type: 'Freelance',
-    salary: '400 € / jour',
+    salary: '150 TND / jour',
     date: '2023-05-05',
-    description: 'Nous cherchons un designer talentueux pour nos projets clients...'
+    description: 'Nous cherchons un designer talentueux pour nos projets clients à Tunis...'
   },
   {
     id: 4,
     title: 'Chef de Projet Digital',
     company: 'AgenceWeb',
-    location: 'Bordeaux',
+    location: 'Bizerte',
     type: 'CDD',
-    salary: '40K - 45K €',
+    salary: '2,200 TND - 2,700 TND',
     date: '2023-05-03',
-    description: 'Gérez nos projets web de A à Z...'
+    description: 'Gérez nos projets web de A à Z à Bizerte...'
   },
   {
     id: 5,
     title: 'Data Scientist',
     company: 'DataInsight',
-    location: 'Toulouse',
+    location: 'Tunis',
     type: 'CDI',
-    salary: '55K - 65K €',
+    salary: '3,000 TND - 4,000 TND',
     date: '2023-05-01',
-    description: 'Analysez nos données pour en extraire des insights précieux...'
+    description: 'Analysez nos données pour en extraire des insights précieux à Tunis...'
   },
 ];
+
 
 const Jobs = () => {
   const [searchTerm, setSearchTerm] = useState('');

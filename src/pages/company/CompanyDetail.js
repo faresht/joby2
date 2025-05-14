@@ -4,40 +4,41 @@ import { Business, LocationOn, People, Language, Phone, Email, Work, Star, Add }
 import { Link, useParams } from 'react-router-dom';
 
 // Données fictives pour l'entreprise
+// Données fictives pour l'entreprise
 const companyData = {
   id: 1,
-  name: 'TechCorp',
+  name: 'InnovaTech',
   logo: '/placeholder.svg',
   coverImage: '/placeholder.svg',
   industry: 'Technologie',
-  location: 'Paris',
+  location: 'Tunis',
   size: '50-200 employés',
-  website: 'https://techcorp.com',
-  phone: '+33 1 23 45 67 89',
-  email: 'contact@techcorp.com',
-  description: 'TechCorp est une entreprise innovante spécialisée dans le développement de solutions web et mobiles. Fondée en 2010, notre mission est de créer des produits numériques qui transforment les industries traditionnelles. Nous sommes passionnés par les nouvelles technologies et nous nous efforçons de fournir des solutions de haute qualité à nos clients.',
-  values: 'Innovation, Excellence, Collaboration, Intégrité',
-  rating: 4.5,
-  reviewsCount: 24,
+  website: 'https://innovatech.tn',
+  phone: '+216 71 123 456',
+  email: 'contact@innovatech.tn',
+  description: 'InnovaTech est une entreprise tunisienne spécialisée dans les solutions numériques innovantes. Fondée en 2015, elle s\'engage à offrir des produits de qualité supérieure dans les domaines du web et du mobile.',
+  values: 'Innovation, Excellence, Respect, Transparence',
+  rating: 4.3,
+  reviewsCount: 18,
   jobs: [
     {
       id: 1,
       title: 'Développeur Frontend React',
-      location: 'Paris',
+      location: 'Tunis',
       type: 'CDI',
       date: '2023-05-10'
     },
     {
       id: 2,
-      title: 'Développeur Backend Node.js',
-      location: 'Paris',
+      title: 'Développeur Backend Laravel',
+      location: 'Sfax',
       type: 'CDI',
       date: '2023-05-08'
     },
     {
       id: 3,
       title: 'Designer UX/UI',
-      location: 'Paris',
+      location: 'Tunis',
       type: 'Freelance',
       date: '2023-05-05'
     }
@@ -47,32 +48,33 @@ const companyData = {
       id: 1,
       author: {
         id: 1,
-        name: 'Thomas Dubois',
+        name: 'Yassine Ben Ali',
         avatar: '/placeholder-user.jpg'
       },
       rating: 4.5,
-      title: 'Excellente entreprise avec une bonne ambiance',
-      content: 'J\'ai travaillé chez TechCorp pendant 2 ans et j\'ai beaucoup apprécié l\'ambiance de travail et les projets intéressants. La direction est à l\'écoute des employés et les avantages sont nombreux.',
-      pros: 'Bonne ambiance, projets intéressants, management à l\'écoute',
-      cons: 'Parfois des heures supplémentaires nécessaires',
+      title: 'Ambiance de travail exceptionnelle',
+      content: 'J\'ai eu une excellente expérience chez InnovaTech. L\'équipe est dynamique et les projets sont stimulants.',
+      pros: 'Équipe motivée, bons outils, management à l\'écoute',
+      cons: 'Parfois des deadlines serrées',
       date: '2023-05-10'
     },
     {
       id: 2,
       author: {
         id: 2,
-        name: 'Julie Lefebvre',
+        name: 'Nour El Houda Mejri',
         avatar: '/placeholder-user.jpg'
       },
       rating: 4.0,
-      title: 'Une entreprise qui valorise ses employés',
-      content: 'TechCorp offre un environnement de travail stimulant avec des opportunités d\'apprentissage et de développement professionnel.',
-      pros: 'Formation continue, projets variés, bonne ambiance',
-      cons: 'Charge de travail parfois élevée',
+      title: 'Bon environnement pour apprendre',
+      content: 'J\'ai beaucoup appris durant mon stage. L\'équipe m\'a bien encadrée et les technologies utilisées sont modernes.',
+      pros: 'Encadrement, technologies récentes, environnement agréable',
+      cons: 'Manque de flexibilité sur les horaires',
       date: '2023-04-15'
     }
   ]
 };
+
 
 const CompanyDetail = () => {
   const { id } = useParams();

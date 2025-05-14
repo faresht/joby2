@@ -11,7 +11,7 @@ const topicsData = [
     title: 'Comment optimiser son CV pour le secteur tech ?',
     author: {
       id: 1,
-      name: 'Thomas Dubois',
+      name: 'Ahmed Ben Ali',
       avatar: '/placeholder-user.jpg'
     },
     category: 'CV et Candidatures',
@@ -32,7 +32,7 @@ const topicsData = [
     title: 'Quelles sont les meilleures entreprises tech à Paris ?',
     author: {
       id: 2,
-      name: 'Julie Lefebvre',
+      name: 'Fatma Zahra',
       avatar: '/placeholder-user.jpg'
     },
     category: 'Entreprises',
@@ -53,7 +53,7 @@ const topicsData = [
     title: 'Conseils pour négocier son salaire',
     author: {
       id: 3,
-      name: 'Sophie Martin',
+      name: 'Sonia Khlifi',
       avatar: '/placeholder-user.jpg'
     },
     category: 'Carrière',
@@ -74,7 +74,7 @@ const topicsData = [
     title: 'Retour d\'expérience : entretien chez Google',
     author: {
       id: 4,
-      name: 'Marc Dupont',
+      name: 'Mohamed Ali',
       avatar: '/placeholder-user.jpg'
     },
     category: 'Entretiens',
@@ -84,7 +84,7 @@ const topicsData = [
     lastReply: {
       author: {
         id: 2,
-        name: 'Julie Lefebvre',
+        name: 'Mariem Brahmi',
         avatar: '/placeholder-user.jpg'
       },
       date: '2023-05-10T14:45:00'
@@ -95,7 +95,7 @@ const topicsData = [
     title: 'Les compétences les plus recherchées en 2023',
     author: {
       id: 5,
-      name: 'Alexandre Petit',
+      name: 'Ahmed Ben Ali',
       avatar: '/placeholder-user.jpg'
     },
     category: 'Compétences',
@@ -105,7 +105,7 @@ const topicsData = [
     lastReply: {
       author: {
         id: 3,
-        name: 'Sophie Martin',
+        name: 'Mariem Brahmi',
         avatar: '/placeholder-user.jpg'
       },
       date: '2023-05-12T08:30:00'

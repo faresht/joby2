@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 
 // Données fictives pour les entreprises
 const companiesData = [
-  { id: 1, name: 'TechCorp', industry: 'Technologie', location: 'Paris', size: '50-200', status: 'active', registrationDate: '2023-05-01', jobsCount: 5 },
-  { id: 2, name: 'WebSolutions', industry: 'Technologie', location: 'Lyon', size: '10-50', status: 'active', registrationDate: '2023-05-02', jobsCount: 3 },
-  { id: 3, name: 'DesignStudio', industry: 'Design', location: 'Marseille', size: '1-10', status: 'active', registrationDate: '2023-05-03', jobsCount: 1 },
-  { id: 4, name: 'AgenceWeb', industry: 'Marketing', location: 'Bordeaux', size: '10-50', status: 'inactive', registrationDate: '2023-05-04', jobsCount: 0 },
-  { id: 5, name: 'DataInsight', industry: 'Data', location: 'Toulouse', size: '50-200', status: 'active', registrationDate: '2023-05-05', jobsCount: 4 },
-  { id: 6, name: 'MobileApp', industry: 'Technologie', location: 'Paris', size: '10-50', status: 'active', registrationDate: '2023-05-06', jobsCount: 2 },
-  { id: 7, name: 'CloudServices', industry: 'Technologie', location: 'Nice', size: '50-200', status: 'active', registrationDate: '2023-05-07', jobsCount: 3 },
-  { id: 8, name: 'MarketingPro', industry: 'Marketing', location: 'Paris', size: '10-50', status: 'active', registrationDate: '2023-05-08', jobsCount: 1 },
-  { id: 9, name: 'AILabs', industry: 'Technologie', location: 'Lyon', size: '10-50', status: 'inactive', registrationDate: '2023-05-09', jobsCount: 0 },
-  { id: 10, name: 'EcoSolutions', industry: 'Environnement', location: 'Montpellier', size: '1-10', status: 'active', registrationDate: '2023-05-10', jobsCount: 2 }
+  { id: 1, name: 'TunisTech', industry: 'Technologie', location: 'Tunis', size: '50-200', status: 'active', registrationDate: '2023-05-01', jobsCount: 5 },
+  { id: 2, name: 'SfaxDigital', industry: 'Technologie', location: 'Sfax', size: '10-50', status: 'active', registrationDate: '2023-05-02', jobsCount: 3 },
+  { id: 3, name: 'DjerbaDesign', industry: 'Design', location: 'Djerba', size: '1-10', status: 'active', registrationDate: '2023-05-03', jobsCount: 1 },
+  { id: 4, name: 'MarketingTunisie', industry: 'Marketing', location: 'Sousse', size: '10-50', status: 'inactive', registrationDate: '2023-05-04', jobsCount: 0 },
+  { id: 5, name: 'DataCarthage', industry: 'Data', location: 'Carthage', size: '50-200', status: 'active', registrationDate: '2023-05-05', jobsCount: 4 },
+  { id: 6, name: 'AppMobileTN', industry: 'Technologie', location: 'Tunis', size: '10-50', status: 'active', registrationDate: '2023-05-06', jobsCount: 2 },
+  { id: 7, name: 'CloudTN', industry: 'Technologie', location: 'Monastir', size: '50-200', status: 'active', registrationDate: '2023-05-07', jobsCount: 3 },
+  { id: 8, name: 'PubPro', industry: 'Marketing', location: 'Tunis', size: '10-50', status: 'active', registrationDate: '2023-05-08', jobsCount: 1 },
+  { id: 9, name: 'AIInno', industry: 'Technologie', location: 'Sfax', size: '10-50', status: 'inactive', registrationDate: '2023-05-09', jobsCount: 0 },
+  { id: 10, name: 'GreenFuture', industry: 'Environnement', location: 'Gabès', size: '1-10', status: 'active', registrationDate: '2023-05-10', jobsCount: 2 }
 ];
 
 const CompaniesList = () => {

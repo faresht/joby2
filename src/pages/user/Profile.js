@@ -6,68 +6,67 @@ import { Link } from 'react-router-dom';
 // Données fictives pour le profil utilisateur
 const userData = {
   id: 1,
-  firstName: 'Thomas',
-  lastName: 'Dubois',
-  title: 'Développeur Full Stack',
-  location: 'Paris, France',
-  email: 'thomas.dubois@example.com',
-  phone: '+33 6 12 34 56 78',
-  about: 'Développeur passionné avec plus de 5 ans d\'expérience dans le développement web. Spécialisé en React, Node.js et bases de données SQL/NoSQL.',
-  skills: ['React', 'Node.js', 'JavaScript', 'TypeScript', 'MongoDB', 'Express', 'HTML/CSS', 'Git'],
+  firstName: 'Amine',
+  lastName: 'Ben Ahmed',
+  title: 'Développeur Frontend',
+  location: 'Tunis, Tunisie',
+  email: 'amine.benahmed@example.com',
+  phone: '+216 50 123 456',
+  about: 'Développeur passionné avec plus de 3 ans d\'expérience dans le développement frontend. Spécialisé en React, JavaScript et CSS.',
+  skills: ['React', 'JavaScript', 'HTML/CSS', 'Vue.js', 'Sass', 'Git', 'Bootstrap'],
   experience: [
     {
       id: 1,
-      title: 'Développeur Full Stack',
-      company: 'TechCorp',
-      location: 'Paris',
-      startDate: '2021-01',
+      title: 'Développeur Frontend',
+      company: 'TunisTech',
+      location: 'Tunis',
+      startDate: '2022-05',
       endDate: null,
       current: true,
-      description: 'Développement d\'applications web avec React et Node.js. Mise en place d\'une architecture microservices.'
+      description: 'Développement d\'interfaces utilisateur avec React et Redux, intégration de services API et mise en place de composants réutilisables.'
     },
     {
       id: 2,
-      title: 'Développeur Frontend',
-      company: 'WebAgency',
-      location: 'Lyon',
-      startDate: '2019-03',
-      endDate: '2020-12',
+      title: 'Développeur Web',
+      company: 'SfaxDigital',
+      location: 'Sfax',
+      startDate: '2020-07',
+      endDate: '2022-04',
       current: false,
-      description: 'Création d\'interfaces utilisateur réactives avec React et Redux.'
+      description: 'Création d\'applications web avec Vue.js et gestion de bases de données MySQL.'
     }
   ],
   education: [
     {
       id: 1,
       degree: 'Master en Informatique',
-      school: 'Université de Paris',
-      location: 'Paris',
-      startDate: '2017',
-      endDate: '2019',
-      description: 'Spécialisation en développement web et applications mobiles.'
+      school: 'Université de Tunis',
+      location: 'Tunis',
+      startDate: '2016',
+      endDate: '2018',
+      description: 'Spécialisation en développement web et bases de données.'
     },
     {
       id: 2,
       degree: 'Licence en Informatique',
-      school: 'Université de Lyon',
-      location: 'Lyon',
-      startDate: '2014',
-      endDate: '2017',
-      description: 'Formation générale en informatique.'
+      school: 'Université de Sfax',
+      location: 'Sfax',
+      startDate: '2013',
+      endDate: '2016',
+      description: 'Formation générale en développement logiciel.'
     }
   ],
   languages: [
-    { language: 'Français', level: 'Natif' },
-    { language: 'Anglais', level: 'Courant' },
-    { language: 'Espagnol', level: 'Intermédiaire' }
+    { language: 'Arabe', level: 'Natif' },
+    { language: 'Français', level: 'Courant' },
+    { language: 'Anglais', level: 'Intermédiaire' }
   ],
   socialLinks: {
-    linkedin: 'https://linkedin.com/in/thomasdubois',
-    github: 'https://github.com/thomasdubois',
-    portfolio: 'https://thomasdubois.com'
+    linkedin: 'https://linkedin.com/in/aminebenahmed',
+    github: 'https://github.com/aminebenahmed',
+    portfolio: 'https://aminebenahmed.com'
   }
-};
-
+}
 const Profile = () => {
   const [tabValue, setTabValue] = useState(0);
 
