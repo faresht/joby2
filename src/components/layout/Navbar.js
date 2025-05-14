@@ -11,11 +11,10 @@ import {
   ListItemIcon,
   ListItemText,
   Box,
-  Menu,
   MenuItem,
+  Button,
 } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
-import AccountCircle from "@mui/icons-material/AccountCircle"
 import HomeIcon from "@mui/icons-material/Home"
 import InfoIcon from "@mui/icons-material/Info"
 import ForumIcon from "@mui/icons-material/Forum"
@@ -97,34 +96,24 @@ function Navbar() {
           Mon Application
         </Typography>
         <div>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
+          <Button color="inherit" component={Link} to="/login" sx={{ mr: 1 }}>
+            Connexion
+          </Button>
+          <Button
             color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
+            variant="outlined"
+            component={Link}
+            to="/register"
+            sx={{
+              borderColor: "white",
+              "&:hover": {
+                borderColor: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
             }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-          </Menu>
+            Inscription
+          </Button>
         </div>
       </Toolbar>
       <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>

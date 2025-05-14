@@ -1,192 +1,52 @@
 import React, { useState } from 'react';
-import { Container, Typography, Grid, Card, CardContent, Button, TextField, Box, Chip, Avatar, Divider, List, ListItem, ListItemAvatar, ListItemText, Pagination, Badge } from '@mui/material';
+import { Container, Typography, Paper, Box, Button, Tabs, Tab, Chip, Card, CardContent, Divider, TextField, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { Add, Search } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { Add, Warning, CheckCircle, HourglassEmpty, Cancel } from '@mui/icons-material';
-import { MenuItem } from '@mui/material';
-// Données fictives pour les réclamations
-const complaintsData = [
+
+// Données fictives pour les réclamations de l'utilisateur
+const userComplaintsData = [
   {
     id: 1,
-    title: 'Problème avec une offre d\'emploi',
-    description: 'J\'ai postulé à une offre d\'emploi qui semble être une arnaque. L\'entreprise demande des frais de dossier.',
-    category: 'Offre d\'emploi',
-    status: 'open', // 'open', 'in_progress', 'resolved', 'closed'
-    date: '2023-05-10',
-    author: {
-      id: 1,
-      name: 'Thomas Dubois',
-      avatar: '/placeholder-user.jpg'
-    },
-    target: {
-      type: 'company',
-      id: 5,
-      name: 'RecrutExpress'
-    },
-    responses: [
-      {
-        id: 1,
-        author: {
-          id: 10,
-          name: 'Support Joby',
-          avatar: '/placeholder-user.jpg',
-          isAdmin: true
-        },
-        content: 'Nous avons bien reçu votre réclamation et nous allons examiner cette offre d\'emploi. Merci de nous avoir signalé ce problème.',
-        date: '2023-05-11'
-      }
-    ]
+    title: "Problème avec une offre d'emploi",
+    category: "Offre d'emploi",
+    date: "2023-05-15",
+    status: "pending",
+    response: null
   },
   {
     id: 2,
-    title: 'Comportement inapproprié d\'un recruteur',
-    description: 'Lors d\'un entretien, le recruteur a posé des questions discriminatoires sur ma situation familiale.',
-    category: 'Recruteur',
-    status: 'in_progress',
-    date: '2023-05-08',
-    author: {
-      id: 2,
-      name: 'Julie Lefebvre',
-      avatar: '/placeholder-user.jpg'
-    },
-    target: {
-      type: 'user',
-      id: 6,
-      name: 'Pierre Martin'
-    },
-    responses: [
-      {
-        id: 2,
-        author: {
-          id: 10,
-          name: 'Support Joby',
-          avatar: '/placeholder-user.jpg',
-          isAdmin: true
-        },
-        content: 'Nous prenons très au sérieux ce type de comportement. Nous avons contacté le recruteur pour obtenir sa version des faits.',
-        date: '2023-05-09'
-      },
-      {
-        id: 3,
-        author: {
-          id: 2,
-          name: 'Julie Lefebvre',
-          avatar: '/placeholder-user.jpg'
-        },
-        content: 'Merci pour votre réactivité. J\'attends votre retour.',
-        date: '2023-05-09'
-      }
-    ]
+    title: "Comportement inapproprié d'un recruteur",
+    category: "Recruteur",
+    date: "2023-05-10",
+    status: "in_progress",
+    response: "Nous examinons actuellement votre réclamation et avons contacté le recruteur concerné."
   },
   {
     id: 3,
-    title: 'Faux profil d\'entreprise',
-    description: 'J\'ai découvert un profil d\'entreprise qui semble être faux. Les informations ne correspondent pas à la réalité.',
-    category: 'Profil',
-    status: 'resolved',
-    date: '2023-05-05',
-    author: {
-      id: 3,
-      name: 'Sophie Martin',
-      avatar: '/placeholder-user.jpg'
-    },
-    target: {
-      type: 'company',
-      id: 7,
-      name: 'TechFuture'
-    },
-    responses: [
-      {
-        id: 4,
-        author: {
-          id: 10,
-          name: 'Support Joby',
-          avatar: '/placeholder-user.jpg',
-          isAdmin: true
-        },
-        content: 'Après vérification, nous avons confirmé que ce profil est effectivement frauduleux. Nous l\'avons supprimé de notre plateforme. Merci pour votre vigilance.',
-        date: '2023-05-07'
-      }
-    ]
-  },
-  {
-    id: 4,
-    title: 'Problème technique avec le formulaire de candidature',
-    description: 'Je n\'arrive pas à joindre mon CV lors de ma candidature. Le système affiche une erreur.',
-    category: 'Technique',
-    status: 'closed',
-    date: '2023-05-03',
-    author: {
-      id: 4,
-      name: 'Marc Dupont',
-      avatar: '/placeholder-user.jpg'
-    },
-    target: {
-      type: 'system',
-      id: null,
-      name: 'Système de candidature'
-    },
-    responses: [
-      {
-        id: 5,
-        author: {
-          id: 10,
-          name: 'Support Joby',
-          avatar: '/placeholder-user.jpg',
-          isAdmin: true
-        },
-        content: 'Nous avons identifié un problème technique avec notre système de téléchargement de fichiers. Il a été résolu. Pouvez-vous réessayer et nous confirmer que tout fonctionne correctement ?',
-        date: '2023-05-04'
-      },
-      {
-        id: 6,
-        author: {
-          id: 4,
-          name: 'Marc Dupont',
-          avatar: '/placeholder-user.jpg'
-        },
-        content: 'J\'ai réessayé et ça fonctionne maintenant. Merci !',
-        date: '2023-05-04'
-      },
-      {
-        id: 7,
-        author: {
-          id: 10,
-          name: 'Support Joby',
-          avatar: '/placeholder-user.jpg',
-          isAdmin: true
-        },
-        content: 'Parfait ! Nous clôturons cette réclamation. N\'hésitez pas à nous contacter si vous rencontrez d\'autres problèmes.',
-        date: '2023-05-04'
-      }
-    ]
+    title: "Problème technique lors de la candidature",
+    category: "Technique",
+    date: "2023-05-05",
+    status: "resolved",
+    response: "Le problème technique a été résolu. Vous pouvez désormais postuler à l'offre sans difficulté."
   }
 ];
 
 const Complaints = () => {
+  const [tabValue, setTabValue] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  const [status, setStatus] = useState('');
-  const [category, setCategory] = useState('');
-  const [page, setPage] = useState(1);
-  const complaintsPerPage = 3;
+  const [statusFilter, setStatusFilter] = useState('');
+
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
 
   // Filtrer les réclamations
-  const filteredComplaints = complaintsData.filter(complaint => {
+  const filteredComplaints = userComplaintsData.filter(complaint => {
     return (
       complaint.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (status === '' || complaint.status === status) &&
-      (category === '' || complaint.category === category)
+      (statusFilter === '' || complaint.status === statusFilter)
     );
   });
-
-  // Pagination
-  const indexOfLastComplaint = page * complaintsPerPage;
-  const indexOfFirstComplaint = indexOfLastComplaint - complaintsPerPage;
-  const currentComplaints = filteredComplaints.slice(indexOfFirstComplaint, indexOfLastComplaint);
-  const pageCount = Math.ceil(filteredComplaints.length / complaintsPerPage);
-
-  const handleChangePage = (event, value) => {
-    setPage(value);
-  };
 
   // Formatage de la date
   const formatDate = (dateString) => {
@@ -194,19 +54,19 @@ const Complaints = () => {
     return new Date(dateString).toLocaleDateString('fr-FR', options);
   };
 
-  // Obtenir l'icône et la couleur en fonction du statut
+  // Obtenir le statut formaté
   const getStatusInfo = (status) => {
     switch (status) {
-      case 'open':
-        return { icon: <Warning />, color: 'error', label: 'Ouvert' };
+      case 'pending':
+        return { label: 'En attente', color: 'warning' };
       case 'in_progress':
-        return { icon: <HourglassEmpty />, color: 'warning', label: 'En cours' };
+        return { label: 'En cours', color: 'info' };
       case 'resolved':
-        return { icon: <CheckCircle />, color: 'success', label: 'Résolu' };
-      case 'closed':
-        return { icon: <Cancel />, color: 'default', label: 'Fermé' };
+        return { label: 'Résolu', color: 'success' };
+      case 'rejected':
+        return { label: 'Rejeté', color: 'error' };
       default:
-        return { icon: <Warning />, color: 'default', label: 'Inconnu' };
+        return { label: 'Inconnu', color: 'default' };
     }
   };
 
@@ -214,7 +74,7 @@ const Complaints = () => {
     <Container>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4, mb: 4 }}>
         <Typography variant="h4" component="h1">
-          Réclamations
+          Mes Réclamations
         </Typography>
         <Button
           variant="contained"
@@ -225,192 +85,119 @@ const Complaints = () => {
           Nouvelle réclamation
         </Button>
       </Box>
-
-      {/* Filtres */}
-      <Card sx={{ mb: 4, p: 2 }}>
-        <CardContent>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                label="Rechercher une réclamation"
-                variant="outlined"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                select
-                label="Statut"
-                variant="outlined"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <MenuItem value="">Tous les statuts</MenuItem>
-                <MenuItem value="open">Ouvert</MenuItem>
-                <MenuItem value="in_progress">En cours</MenuItem>
-                <MenuItem value="resolved">Résolu</MenuItem>
-                <MenuItem value="closed">Fermé</MenuItem>
-              </TextField>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                select
-                label="Catégorie"
-                variant="outlined"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <MenuItem value="">Toutes les catégories</MenuItem>
-                <MenuItem value="Offre d'emploi">Offre d'emploi</MenuItem>
-                <MenuItem value="Recruteur">Recruteur</MenuItem>
-                <MenuItem value="Profil">Profil</MenuItem>
-                <MenuItem value="Technique">Technique</MenuItem>
-              </TextField>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-
-      {/* Liste des réclamations */}
-      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        {currentComplaints.length > 0 ? (
-          currentComplaints.map((complaint) => {
-            const statusInfo = getStatusInfo(complaint.status);
-            
-            return (
-              <Card key={complaint.id} sx={{ mb: 3 }}>
-                <CardContent>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Badge
-                        overlap="circular"
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                        badgeContent={
-                          <Avatar sx={{ width: 22, height: 22, bgcolor: `${statusInfo.color}.main` }}>
-                            {statusInfo.icon}
-                          </Avatar>
-                        }
-                      >
-                        <Avatar alt={complaint.author.name} src={complaint.author.avatar} />
-                      </Badge>
-                      <Box sx={{ ml: 2 }}>
-                        <Typography variant="h6">
-                          {complaint.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          Par {complaint.author.name} - {formatDate(complaint.date)}
-                        </Typography>
-                      </Box>
-                    </Box>
-                    <Chip 
-                      label={statusInfo.label} 
-                      color={statusInfo.color} 
-                      size="small" 
-                      icon={statusInfo.icon} 
-                    />
-                  </Box>
-                  
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body1" paragraph>
-                      {complaint.description}
-                    </Typography>
-                    <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-                      <Chip label={complaint.category} size="small" color="primary" variant="outlined" />
-                      <Chip 
-                        label={`Concernant: ${complaint.target.name}`} 
-                        size="small" 
-                        variant="outlined" 
-                      />
-                    </Box>
-                  </Box>
-                  
-                  <Divider sx={{ my: 2 }} />
-                  
-                  <Box>
-                    <Typography variant="subtitle2" gutterBottom>
-                      {complaint.responses.length} réponse(s)
-                    </Typography>
-                    {complaint.responses.slice(0, 1).map((response) => (
-                      <Box key={response.id} sx={{ display: 'flex', mt: 2 }}>
-                        <Avatar 
-                          alt={response.author.name} 
-                          src={response.author.avatar} 
-                          sx={{ width: 32, height: 32, mr: 2 }}
-                        />
-                        <Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Typography variant="subtitle2">
-                              {response.author.name}
-                            </Typography>
-                            {response.author.isAdmin && (
-                              <Chip 
-                                label="Admin" 
-                                size="small" 
-                                color="primary" 
-                                sx={{ ml: 1, height: 20 }} 
-                              />
-                            )}
-                          </Box>
-                          <Typography variant="body2" color="text.secondary">
-                            {formatDate(response.date)}
-                          </Typography>
-                          <Typography variant="body2" sx={{ mt: 1 }}>
-                            {response.content}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    ))}
-                    {complaint.responses.length > 1 && (
-                      <Box sx={{ mt: 2, textAlign: 'center' }}>
-                        <Button 
-                          variant="text" 
-                          component={Link} 
-                          to={`/complaints/${complaint.id}`}
-                        >
-                          Voir toutes les réponses ({complaint.responses.length})
-                        </Button>
-                      </Box>
-                    )}
-                  </Box>
-                  
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-                    <Button 
-                      variant="contained" 
-                      component={Link} 
-                      to={`/complaints/${complaint.id}`}
-                    >
-                      Voir les détails
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Card>
-            );
-          })
-        ) : (
-          <Card>
-            <CardContent>
-              <Typography variant="h6" align="center" sx={{ my: 4 }}>
-                Aucune réclamation ne correspond à votre recherche.
-              </Typography>
-            </CardContent>
-          </Card>
-        )}
-      </List>
-
-      {/* Pagination */}
-      {filteredComplaints.length > 0 && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 4 }}>
-          <Pagination 
-            count={pageCount} 
-            page={page} 
-            onChange={handleChangePage} 
-            color="primary" 
+      
+      <Paper sx={{ mb: 4 }}>
+        <Tabs
+          value={tabValue}
+          onChange={handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+        >
+          <Tab label="Toutes" />
+          <Tab label="En attente" />
+          <Tab label="En cours" />
+          <Tab label="Résolues" />
+        </Tabs>
+      </Paper>
+      
+      <Paper sx={{ p: 2, mb: 4 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <TextField
+            label="Rechercher"
+            variant="outlined"
+            size="small"
+            fullWidth
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            InputProps={{
+              startAdornment: <Search fontSize="small" sx={{ mr: 1 }} />
+            }}
           />
+          <FormControl variant="outlined" size="small" sx={{ minWidth: 200 }}>
+            <InputLabel id="status-filter-label">Statut</InputLabel>
+            <Select
+              labelId="status-filter-label"
+              id="status-filter"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              label="Statut"
+            >
+              <MenuItem value="">Tous</MenuItem>
+              <MenuItem value="pending">En attente</MenuItem>
+              <MenuItem value="in_progress">En cours</MenuItem>
+              <MenuItem value="resolved">Résolu</MenuItem>
+              <MenuItem value="rejected">Rejeté</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
+      </Paper>
+      
+      {filteredComplaints.length === 0 ? (
+        <Paper sx={{ p: 4, textAlign: 'center' }}>
+          <Typography variant="h6" color="text.secondary">
+            Aucune réclamation trouvée
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
+            Vous n'avez pas encore soumis de réclamation ou aucune réclamation ne correspond à vos critères de recherche.
+          </Typography>
+          <Button
+            variant="contained"
+            startIcon={<Add />}
+            component={Link}
+            to="/create-complaint"
+            sx={{ mt: 3 }}
+          >
+            Soumettre une réclamation
+          </Button>
+        </Paper>
+      ) : (
+        filteredComplaints.map((complaint) => {
+          const statusInfo = getStatusInfo(complaint.status);
+          
+          return (
+            <Card key={complaint.id} sx={{ mb: 3 }}>
+              <CardContent>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                  <Typography variant="h6" component="h2">
+                    {complaint.title}
+                  </Typography>
+                  <Chip
+                    label={statusInfo.label}
+                    color={statusInfo.color}
+                    size="small"
+                  />
+                </Box>
+                
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                  Catégorie: {complaint.category} • Soumise le {formatDate(complaint.date)}
+                </Typography>
+                
+                {complaint.response && (
+                  <>
+                    <Divider sx={{ my: 2 }} />
+                    <Typography variant="subtitle2" gutterBottom>
+                      Réponse de l'administration:
+                    </Typography>
+                    <Typography variant="body2" paragraph>
+                      {complaint.response}
+                    </Typography>
+                  </>
+                )}
+                
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                  <Button
+                    variant="outlined"
+                    component={Link}
+                    to={`/complaints/${complaint.id}`}
+                  >
+                    Voir les détails
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          );
+        })
       )}
     </Container>
   );

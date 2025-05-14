@@ -46,7 +46,9 @@ import CreateComplaint from './pages/complaints/CreateComplaint.js';
 // Pages admin
 import AdminDashboard from './pages/admin/AdminDashboard.js';
 import UsersList from './pages/admin/UsersList.js';
-import CompaniesList from './pages/admin/CompaniesList.js';
+import CompaniesList from "./pages/admin/CompaniesList.js"
+import ComplaintsList from "./pages/admin/ComplaintsList.js";
+
 
 // Thème personnalisé blanc et bleu
 const theme = createTheme({
@@ -110,10 +112,11 @@ function App() {
             <Route path="/complaints" element={<Complaints />} />
             <Route path="/create-complaint" element={<CreateComplaint />} />
             
-            {/* Routes admin */}
-            <Route path="/admin" element={<AdminDashboard />} />
+          {/* Routes admin */}
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/users" element={<UsersList />} />
             <Route path="/admin/companies" element={<CompaniesList />} />
+            <Route path="/admin/complaints" element={<ComplaintsList />} />
           </Routes>
         </div>
         <Footer />

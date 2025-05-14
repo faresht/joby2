@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { ShowChart as LineChartIcon } from '@mui/icons-material';
+"use client"
+
+import React, { useState } from "react"
+import { ShowChart as LineChartIcon } from "@mui/icons-material"
 import {
   Container,
   Typography,
@@ -17,31 +19,20 @@ import {
   Divider,
   Button,
   Chip,
-  Paper
-} from '@mui/material';
-import { Link } from 'react-router-dom';
+  Paper,
+} from "@mui/material"
+import { Link } from "react-router-dom"
 import {
   Person,
   Business,
   Work,
   Star,
   Warning,
-  BarChart,
   PieChart as PieChartIcon,
   TrendingUp,
-  TrendingDown
-} from '@mui/icons-material';
-
-// Recharts
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from 'recharts';
+  TrendingDown,
+  ReportProblem,
+} from "@mui/icons-material"
 
 // Dummy data
 const dashboardData = {
@@ -50,51 +41,52 @@ const dashboardData = {
     companies: 87,
     jobs: 342,
     reviews: 568,
-    complaints: 23
+    complaints: 23,
   },
   recentUsers: [
-    { id: 1, name: 'Thomas Dubois', email: 'thomas.dubois@example.com', date: '2023-05-12', type: 'user' },
-    { id: 2, name: 'Julie Lefebvre', email: 'julie.lefebvre@example.com', date: '2023-05-11', type: 'user' },
-    { id: 3, name: 'TechCorp', email: 'contact@techcorp.com', date: '2023-05-10', type: 'company' }
+    { id: 1, name: "Thomas Dubois", email: "thomas.dubois@example.com", date: "2023-05-12", type: "user" },
+    { id: 2, name: "Julie Lefebvre", email: "julie.lefebvre@example.com", date: "2023-05-11", type: "user" },
+    { id: 3, name: "TechCorp", email: "contact@techcorp.com", date: "2023-05-10", type: "company" },
   ],
   recentJobs: [
-    { id: 1, title: 'Développeur Frontend React', company: 'TechCorp', date: '2023-05-12' },
-    { id: 2, title: 'Développeur Backend Node.js', company: 'WebSolutions', date: '2023-05-11' },
-    { id: 3, title: 'Designer UX/UI', company: 'DesignStudio', date: '2023-05-10' }
+    { id: 1, title: "Développeur Frontend React", company: "TechCorp", date: "2023-05-12" },
+    { id: 2, title: "Développeur Backend Node.js", company: "WebSolutions", date: "2023-05-11" },
+    { id: 3, title: "Designer UX/UI", company: "DesignStudio", date: "2023-05-10" },
   ],
   recentComplaints: [
-    { id: 1, title: "Problème avec une offre d'emploi", status: 'open', date: '2023-05-12' },
-    { id: 2, title: "Comportement inapproprié d'un recruteur", status: 'in_progress', date: '2023-05-11' },
-    { id: 3, title: "Faux profil d'entreprise", status: 'resolved', date: '2023-05-10' }
-  ]
-};
+    { id: 1, title: "Problème avec une offre d'emploi", status: "open", date: "2023-05-12" },
+    { id: 2, title: "Comportement inapproprié d'un recruteur", status: "in_progress", date: "2023-05-11" },
+    { id: 3, title: "Faux profil d'entreprise", status: "resolved", date: "2023-05-10" },
+  ],
+}
 
 const AdminDashboard = () => {
-  const [tabValue, setTabValue] = useState(0);
+  console.log("AdminDashboard component is rendering")
+  const [tabValue, setTabValue] = useState(0)
 
   const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
-  };
+    setTabValue(newValue)
+  }
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('fr-FR', options);
-  };
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString("fr-FR", options)
+  }
 
   const getComplaintStatusInfo = (status) => {
     switch (status) {
-      case 'open':
-        return { color: 'error', label: 'Ouvert' };
-      case 'in_progress':
-        return { color: 'warning', label: 'En cours' };
-      case 'resolved':
-        return { color: 'success', label: 'Résolu' };
-      case 'closed':
-        return { color: 'default', label: 'Fermé' };
+      case "open":
+        return { color: "error", label: "Ouvert" }
+      case "in_progress":
+        return { color: "warning", label: "En cours" }
+      case "resolved":
+        return { color: "success", label: "Résolu" }
+      case "closed":
+        return { color: "default", label: "Fermé" }
       default:
-        return { color: 'default', label: 'Inconnu' };
+        return { color: "default", label: "Inconnu" }
     }
-  };
+  }
 
   return (
     <Container>
@@ -103,26 +95,57 @@ const AdminDashboard = () => {
       </Typography>
 
       {/* Statistiques */}
+
       <Grid container spacing={3} sx={{ mb: 4 }}>
         {[
-          { icon: <Person color="primary" />, label: 'Utilisateurs', value: dashboardData.stats.users, change: '+12%', color: 'success' },
-          { icon: <Business color="primary" />, label: 'Entreprises', value: dashboardData.stats.companies, change: '+5%', color: 'success' },
-          { icon: <Work color="primary" />, label: "Offres d'emploi", value: dashboardData.stats.jobs, change: '+18%', color: 'success' },
-          { icon: <Star color="primary" />, label: 'Avis', value: dashboardData.stats.reviews, change: '+8%', color: 'success' },
-          { icon: <Warning color="primary" />, label: 'Réclamations', value: dashboardData.stats.complaints, change: '-3%', color: 'error' }
+          {
+            icon: <Person color="primary" />,
+            label: "Utilisateurs",
+            value: dashboardData.stats.users,
+            change: "+12%",
+            color: "success",
+          },
+          {
+            icon: <Business color="primary" />,
+            label: "Entreprises",
+            value: dashboardData.stats.companies,
+            change: "+5%",
+            color: "success",
+          },
+          {
+            icon: <Work color="primary" />,
+            label: "Offres d'emploi",
+            value: dashboardData.stats.jobs,
+            change: "+18%",
+            color: "success",
+          },
+          {
+            icon: <Star color="primary" />,
+            label: "Avis",
+            value: dashboardData.stats.reviews,
+            change: "+8%",
+            color: "success",
+          },
+          {
+            icon: <Warning color="primary" />,
+            label: "Réclamations",
+            value: dashboardData.stats.complaints,
+            change: "-3%",
+            color: "error",
+          },
         ].map((stat, index) => (
           <Grid item xs={12} sm={6} md={2.4} key={index}>
             <Card>
               <CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                   {stat.icon}
                   <Typography variant="h6" component="div" sx={{ ml: 1 }}>
                     {stat.label}
                   </Typography>
                 </Box>
                 <Typography variant="h4">{stat.value}</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                  {stat.color === 'success' ? (
+                <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+                  {stat.color === "success" ? (
                     <TrendingUp color="success" fontSize="small" sx={{ mr: 0.5 }} />
                   ) : (
                     <TrendingDown color="error" fontSize="small" sx={{ mr: 0.5 }} />
@@ -137,7 +160,86 @@ const AdminDashboard = () => {
         ))}
       </Grid>
 
+      {/* Fonctionnalités d'administration */}
+      <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 6, mb: 3 }}>
+        Fonctionnalités d'administration
+      </Typography>
+
+      <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid item xs={12} md={6} lg={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <Person sx={{ fontSize: 60, color: "primary.main", mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
+                Utilisateurs
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Gérer les comptes utilisateurs
+              </Typography>
+              <Button variant="outlined" component={Link} to="/admin/users">
+                Voir les utilisateurs
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <Business sx={{ fontSize: 60, color: "primary.main", mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
+                Entreprises
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Gérer les comptes entreprises
+              </Typography>
+              <Button variant="outlined" component={Link} to="/admin/companies">
+                Voir les entreprises
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <Work sx={{ fontSize: 60, color: "primary.main", mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
+                Offres d'emploi
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Gérer les offres d'emploi
+              </Typography>
+              <Button variant="outlined" component={Link} to="/admin/jobs">
+                Voir les offres
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <ReportProblem sx={{ fontSize: 60, color: "primary.main", mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
+                Réclamations
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                Gérer les réclamations des utilisateurs
+              </Typography>
+              <Button variant="outlined" component={Link} to="/admin/complaints">
+                Voir les réclamations
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
       {/* Graphiques */}
+      <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 6, mb: 3 }}>
+        Statistiques et tendances
+      </Typography>
+
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} md={8}>
           <Card>
@@ -145,8 +247,8 @@ const AdminDashboard = () => {
               <Typography variant="h6" gutterBottom>
                 Évolution des inscriptions
               </Typography>
-              <Box sx={{ height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <LineChartIcon sx={{ fontSize: 100, color: 'text.secondary' }} />
+              <Box sx={{ height: 300, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <LineChartIcon sx={{ fontSize: 100, color: "text.secondary" }} />
                 <Typography variant="body2" color="text.secondary" sx={{ ml: 2 }}>
                   Graphique d'évolution des inscriptions (à implémenter)
                 </Typography>
@@ -155,13 +257,21 @@ const AdminDashboard = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card sx={{ height: '100%' }}>
+          <Card sx={{ height: "100%" }}>
             <CardContent>
               <Typography variant="h6" gutterBottom>
                 Répartition des utilisateurs
               </Typography>
-              <Box sx={{ height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <PieChartIcon sx={{ fontSize: 100, color: 'text.secondary' }} />
+              <Box
+                sx={{
+                  height: 300,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <PieChartIcon sx={{ fontSize: 100, color: "text.secondary" }} />
                 <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
                   Graphique de répartition (à implémenter)
                 </Typography>
@@ -172,6 +282,10 @@ const AdminDashboard = () => {
       </Grid>
 
       {/* Onglets */}
+      <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 6, mb: 3 }}>
+        Activité récente
+      </Typography>
+
       <Paper sx={{ mb: 4 }}>
         <Tabs value={tabValue} onChange={handleTabChange} aria-label="admin tabs" centered>
           <Tab label="Utilisateurs récents" id="tab-0" />
@@ -187,16 +301,16 @@ const AdminDashboard = () => {
                 <React.Fragment key={user.id}>
                   <ListItem>
                     <ListItemAvatar>
-                      <Avatar>{user.type === 'company' ? <Business /> : <Person />}</Avatar>
+                      <Avatar>{user.type === "company" ? <Business /> : <Person />}</Avatar>
                     </ListItemAvatar>
                     <ListItemText
                       primary={
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
                           <Typography variant="subtitle1">{user.name}</Typography>
                           <Chip
-                            label={user.type === 'company' ? 'Entreprise' : 'Utilisateur'}
+                            label={user.type === "company" ? "Entreprise" : "Utilisateur"}
                             size="small"
-                            color={user.type === 'company' ? 'primary' : 'secondary'}
+                            color={user.type === "company" ? "primary" : "secondary"}
                             variant="outlined"
                             sx={{ ml: 1 }}
                           />
@@ -207,7 +321,7 @@ const AdminDashboard = () => {
                           <Typography component="span" variant="body2" color="text.primary">
                             {user.email}
                           </Typography>
-                          {' — Inscrit le ' + formatDate(user.date)}
+                          {" — Inscrit le " + formatDate(user.date)}
                         </>
                       }
                     />
@@ -215,7 +329,7 @@ const AdminDashboard = () => {
                       variant="outlined"
                       size="small"
                       component={Link}
-                      to={user.type === 'company' ? `/admin/companies/${user.id}` : `/admin/users/${user.id}`}
+                      to={user.type === "company" ? `/admin/companies/${user.id}` : `/admin/users/${user.id}`}
                     >
                       Voir
                     </Button>
@@ -235,7 +349,9 @@ const AdminDashboard = () => {
                 <React.Fragment key={job.id}>
                   <ListItem>
                     <ListItemAvatar>
-                      <Avatar><Work /></Avatar>
+                      <Avatar>
+                        <Work />
+                      </Avatar>
                     </ListItemAvatar>
                     <ListItemText
                       primary={job.title}
@@ -244,7 +360,7 @@ const AdminDashboard = () => {
                           <Typography component="span" variant="body2" color="text.primary">
                             {job.company}
                           </Typography>
-                          {' — Publié le ' + formatDate(job.date)}
+                          {" — Publié le " + formatDate(job.date)}
                         </>
                       }
                     />
@@ -264,36 +380,38 @@ const AdminDashboard = () => {
           <Box>
             <List>
               {dashboardData.recentComplaints.map((complaint, index) => {
-                const statusInfo = getComplaintStatusInfo(complaint.status);
+                const statusInfo = getComplaintStatusInfo(complaint.status)
                 return (
                   <React.Fragment key={complaint.id}>
                     <ListItem>
                       <ListItemAvatar>
-                        <Avatar><Warning /></Avatar>
+                        <Avatar>
+                          <Warning />
+                        </Avatar>
                       </ListItemAvatar>
                       <ListItemText
                         primary={
-                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <Box sx={{ display: "flex", alignItems: "center" }}>
                             <Typography variant="subtitle1">{complaint.title}</Typography>
                             <Chip label={statusInfo.label} size="small" color={statusInfo.color} sx={{ ml: 1 }} />
                           </Box>
                         }
                         secondary={`Reçue le ${formatDate(complaint.date)}`}
                       />
-                      <Button variant="outlined" size="small">
+                      <Button variant="outlined" size="small" component={Link} to={`/admin/complaints/${complaint.id}`}>
                         Gérer
                       </Button>
                     </ListItem>
                     {index < dashboardData.recentComplaints.length - 1 && <Divider variant="inset" component="li" />}
                   </React.Fragment>
-                );
+                )
               })}
             </List>
           </Box>
         )}
       </Paper>
     </Container>
-  );
-};
+  )
+}
 
-export default AdminDashboard;
+export default AdminDashboard
