@@ -1,99 +1,155 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, IconButton, Button, Box } from '@mui/material';
+"use client"
+
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import {
-  Home, AccountCircle, Work, Business, Forum, Reviews,
-  Report, AdminPanelSettings, Logout, TrendingUp
-} from '@mui/icons-material';
+    AppBar,
+    Toolbar,
+    IconButton,
+    Button,
+    Box,
+    Tooltip,
+    useTheme,
+} from "@mui/material"
+import {
+    Home,
+    AccountCircle,
+    Work,
+    Business,
+    Forum,
+    Star as Reviews,
+    Report,
+    AdminPanelSettings,
+    Logout,
+    TrendingUp,
+} from "@mui/icons-material"
 
 const Navbar = () => {
-  const location = useLocation();
-  const activeStyle = {
-    color: '#1565c0' // Bleu foncé pour les liens actifs
-  };
+    const location = useLocation()
+    const navigate = useNavigate()
+    const theme = useTheme()
 
-  return (
-      <AppBar position="sticky" elevation={1} sx={{ backgroundColor: '#fff', color: '#1976d2' }}>
-        <Toolbar>
-          {/* Titre */}
-          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#1976d2' }}>
-            Joby
-          </Typography>
+    const primaryBlue = "#0A66C2"
+    const lightBlue = "#E8F1FB"
 
-          {/* Liens avec icônes */}
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <IconButton
-                component={Link}
-                to="/"
-                sx={location.pathname === '/' ? activeStyle : {}}
-            >
-              <Home />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/profile"
-                sx={location.pathname.startsWith('/profile') ? activeStyle : {}}
-            >
-              <AccountCircle />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/companies"
-                sx={location.pathname.startsWith('/companies') ? activeStyle : {}}
-            >
-              <Business />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/jobs"
-                sx={location.pathname.startsWith('/jobs') ? activeStyle : {}}
-            >
-              <Work />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/forum"
-                sx={location.pathname.startsWith('/forum') ? activeStyle : {}}
-            >
-              <Forum />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/reviews"
-                sx={location.pathname.startsWith('/reviews') ? activeStyle : {}}
-            >
-              <Reviews />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/create-complaint"
-                sx={location.pathname.startsWith('/create-complaint') ? activeStyle : {}}
-            >
-              <Report />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/admin/dashboard"
-                sx={location.pathname.startsWith('/admin') ? activeStyle : {}}
-            >
-              <AdminPanelSettings />
-            </IconButton>
-            <IconButton
-                component={Link}
-                to="/Perfomance"
-                sx={location.pathname.startsWith('/Perfomance') ? activeStyle : {}}
-            >
-              <TrendingUp />
-            </IconButton>
-          </Box>
+    const navItems = [
+        { path: "/", icon: <Home />, label: "Accueil" },
+        { path: "/profile", icon: <AccountCircle />, label: "Profil" },
+        { path: "/companies", icon: <Business />, label: "Entreprises" },
+        { path: "/jobs", icon: <Work />, label: "Emplois" },
+        { path: "/forum", icon: <Forum />, label: "Forum" },
+        { path: "/reviews", icon: <Reviews />, label: "Avis" },
+        { path: "/create-complaint", icon: <Report />, label: "Réclamation" },
+        { path: "/Perfomance", icon: <TrendingUp />, label: "Performance" },
+    ]
 
-          {/* Bouton logout */}
-          <Button color="primary" startIcon={<Logout />} sx={{ ml: 2 }}>
-            Logout
-          </Button>
-        </Toolbar>
-      </AppBar>
-  );
-};
+    const adminItem = { path: "/admin/dashboard", icon: <AdminPanelSettings />, label: "Admin" }
 
-export default Navbar;
+    const isActive = (path: string) => {
+        if (path === "/") return location.pathname === "/"
+        return location.pathname.startsWith(path)
+    }
+
+    const handleLogout = () => {
+        // Tu peux aussi vider les données du localStorage ici si nécessaire
+        navigate("/login")
+    }
+
+    return (
+        <AppBar
+            position="sticky"
+            elevation={0}
+            sx={{
+                backgroundColor: "white",
+                borderBottom: "1px solid #e0e0e0",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
+            }}
+        >
+            <Toolbar sx={{ justifyContent: "space-between" }}>
+                {/* Logo */}
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Box
+                        component={Link}
+                        to="/"
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            textDecoration: "none",
+                            color: "inherit",
+                        }}
+                    >
+                        <Box component="img" src="/joby.png" alt="Joby Logo" sx={{ height: 40 }} />
+                    </Box>
+                </Box>
+
+                {/* Navigation Links */}
+                <Box sx={{ display: "flex", gap: 0.5, mx: 2 }}>
+                    {navItems.map((item) => (
+                        <Tooltip title={item.label} key={item.path}>
+                            <IconButton
+                                component={Link}
+                                to={item.path}
+                                sx={{
+                                    color: isActive(item.path) ? primaryBlue : "text.secondary",
+                                    bgcolor: isActive(item.path) ? lightBlue : "transparent",
+                                    borderRadius: "8px",
+                                    mx: 0.5,
+                                    transition: "all 0.2s ease",
+                                    "&:hover": {
+                                        bgcolor: lightBlue,
+                                        transform: "translateY(-2px)",
+                                    },
+                                }}
+                            >
+                                {item.icon}
+                            </IconButton>
+                        </Tooltip>
+                    ))}
+                    <Tooltip title="Administration">
+                        <IconButton
+                            component={Link}
+                            to={adminItem.path}
+                            sx={{
+                                color: isActive(adminItem.path) ? primaryBlue : "text.secondary",
+                                bgcolor: isActive(adminItem.path) ? lightBlue : "transparent",
+                                borderRadius: "8px",
+                                mx: 0.5,
+                                transition: "all 0.2s ease",
+                                "&:hover": {
+                                    bgcolor: lightBlue,
+                                    transform: "translateY(-2px)",
+                                },
+                            }}
+                        >
+                            {adminItem.icon}
+                        </IconButton>
+                    </Tooltip>
+                </Box>
+
+                {/* Logout Button */}
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<Logout />}
+                        onClick={handleLogout}
+                        sx={{
+                            borderRadius: "50px",
+                            textTransform: "none",
+                            px: 2,
+                            borderColor: primaryBlue,
+                            color: primaryBlue,
+                            "&:hover": {
+                                borderColor: primaryBlue,
+                                bgcolor: lightBlue,
+                            },
+                        }}
+                    >
+                        Déconnexion
+                    </Button>
+                </Box>
+            </Toolbar>
+        </AppBar>
+    )
+}
+
+export default Navbar
