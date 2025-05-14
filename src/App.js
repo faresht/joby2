@@ -49,7 +49,7 @@ import UsersList from './pages/admin/UsersList.js';
 import CompaniesList from "./pages/admin/CompaniesList.js"
 import ComplaintsList from "./pages/admin/ComplaintsList.js";
 
-
+import Performance from "./pages/Perfomance/Perfomance.js"
 // Thème personnalisé blanc et bleu
 const theme = createTheme({
   palette: {
@@ -88,7 +88,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/edit" element={<EditProfile />} />
             <Route path="/cv" element={<CV />} />
-            
+            <Route path="/Perfomance" element={<Performance />} />
             {/* Routes entreprise */}
             <Route path="/companies" element={<Companies />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />

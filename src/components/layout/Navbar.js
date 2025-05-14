@@ -1,126 +1,99 @@
-"use client"
-
-import React from "react"
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, IconButton, Button, Box } from '@mui/material';
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Drawer,
-  List,
-  ListItemIcon,
-  ListItemText,
-  Box,
-  MenuItem,
-  Button,
-} from "@mui/material"
-import MenuIcon from "@mui/icons-material/Menu"
-import HomeIcon from "@mui/icons-material/Home"
-import InfoIcon from "@mui/icons-material/Info"
-import ForumIcon from "@mui/icons-material/Forum"
-import RateReviewIcon from "@mui/icons-material/RateReview"
-import { ReportProblem } from "@mui/icons-material" // Added import
-import { Link } from "react-router-dom"
+  Home, AccountCircle, Work, Business, Forum, Reviews,
+  Report, AdminPanelSettings, Logout, TrendingUp
+} from '@mui/icons-material';
 
-function Navbar() {
-  const [drawerOpen, setDrawerOpen] = React.useState(false)
-  const [anchorEl, setAnchorEl] = React.useState(null)
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const toggleDrawer = (open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
-      return
-    }
-
-    setDrawerOpen(open)
-  }
-
-  const list = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-      <List>
-        <MenuItem component={Link} to="/">
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Accueil</ListItemText>
-        </MenuItem>
-        <MenuItem component={Link} to="/about">
-          <ListItemIcon>
-            <InfoIcon />
-          </ListItemIcon>
-          <ListItemText>À propos</ListItemText>
-        </MenuItem>
-        <MenuItem component={Link} to="/forum">
-          <ListItemIcon>
-            <ForumIcon />
-          </ListItemIcon>
-          <ListItemText>Forum</ListItemText>
-        </MenuItem>
-        <MenuItem component={Link} to="/reviews">
-          <ListItemIcon>
-            <RateReviewIcon />
-          </ListItemIcon>
-          <ListItemText>Avis</ListItemText>
-        </MenuItem>
-        <MenuItem component={Link} to="/complaints">
-          <ListItemIcon>
-            <ReportProblem fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Réclamations</ListItemText>
-        </MenuItem>
-      </List>
-    </Box>
-  )
+const Navbar = () => {
+  const location = useLocation();
+  const activeStyle = {
+    color: '#1565c0' // Bleu foncé pour les liens actifs
+  };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2 }}
-          onClick={toggleDrawer(true)}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Mon Application
-        </Typography>
-        <div>
-          <Button color="inherit" component={Link} to="/login" sx={{ mr: 1 }}>
-            Connexion
-          </Button>
-          <Button
-            color="inherit"
-            variant="outlined"
-            component={Link}
-            to="/register"
-            sx={{
-              borderColor: "white",
-              "&:hover": {
-                borderColor: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-              },
-            }}
-          >
-            Inscription
-          </Button>
-        </div>
-      </Toolbar>
-      <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
-        {list}
-      </Drawer>
-    </AppBar>
-  )
-}
+      <AppBar position="sticky" elevation={1} sx={{ backgroundColor: '#fff', color: '#1976d2' }}>
+        <Toolbar>
+          {/* Titre */}
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#1976d2' }}>
+            Joby
+          </Typography>
 
-export default Navbar
+          {/* Liens avec icônes */}
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <IconButton
+                component={Link}
+                to="/"
+                sx={location.pathname === '/' ? activeStyle : {}}
+            >
+              <Home />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/profile"
+                sx={location.pathname.startsWith('/profile') ? activeStyle : {}}
+            >
+              <AccountCircle />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/companies"
+                sx={location.pathname.startsWith('/companies') ? activeStyle : {}}
+            >
+              <Business />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/jobs"
+                sx={location.pathname.startsWith('/jobs') ? activeStyle : {}}
+            >
+              <Work />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/forum"
+                sx={location.pathname.startsWith('/forum') ? activeStyle : {}}
+            >
+              <Forum />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/reviews"
+                sx={location.pathname.startsWith('/reviews') ? activeStyle : {}}
+            >
+              <Reviews />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/create-complaint"
+                sx={location.pathname.startsWith('/create-complaint') ? activeStyle : {}}
+            >
+              <Report />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/admin"
+                sx={location.pathname.startsWith('/admin') ? activeStyle : {}}
+            >
+              <AdminPanelSettings />
+            </IconButton>
+            <IconButton
+                component={Link}
+                to="/Perfomance"
+                sx={location.pathname.startsWith('/Perfomance') ? activeStyle : {}}
+            >
+              <TrendingUp />
+            </IconButton>
+          </Box>
+
+          {/* Bouton logout */}
+          <Button color="primary" startIcon={<Logout />} sx={{ ml: 2 }}>
+            Logout
+          </Button>
+        </Toolbar>
+      </AppBar>
+  );
+};
+
+export default Navbar;
