@@ -4,10 +4,12 @@ import { Add, Work, Person, Business, Assessment, BarChart, TrendingUp, Trending
 import { Link } from 'react-router-dom';
 
 // Données fictives pour le tableau de bord de l'entreprise
+// Extrait modifié du dashboardData
+
 const dashboardData = {
   company: {
     id: 1,
-    name: 'TechCorp',
+    name: 'TunisTech',
     logo: '/placeholder.svg'
   },
   stats: {
@@ -20,16 +22,16 @@ const dashboardData = {
     {
       id: 1,
       title: 'Développeur Frontend React',
-      location: 'Paris',
+      location: 'Tunis',
       type: 'CDI',
       date: '2023-05-10',
       applications: 12,
-      status: 'active' // 'active' ou 'closed'
+      status: 'active'
     },
     {
       id: 2,
       title: 'Développeur Backend Node.js',
-      location: 'Paris',
+      location: 'Sfax',
       type: 'CDI',
       date: '2023-05-08',
       applications: 8,
@@ -38,7 +40,7 @@ const dashboardData = {
     {
       id: 3,
       title: 'Designer UX/UI',
-      location: 'Paris',
+      location: 'Sousse',
       type: 'Freelance',
       date: '2023-05-05',
       applications: 5,
@@ -54,12 +56,12 @@ const dashboardData = {
       },
       candidate: {
         id: 1,
-        name: 'Thomas Dubois',
+        name: 'Ahmed Ben Salah',
         avatar: '/placeholder-user.jpg',
         title: 'Développeur Full Stack'
       },
       date: '2023-05-12',
-      status: 'pending' // 'pending', 'reviewed', 'interview', 'rejected', 'hired'
+      status: 'pending'
     },
     {
       id: 2,
@@ -69,7 +71,7 @@ const dashboardData = {
       },
       candidate: {
         id: 2,
-        name: 'Julie Lefebvre',
+        name: 'Nour El Houda Trabelsi',
         avatar: '/placeholder-user.jpg',
         title: 'Développeuse Frontend'
       },
@@ -84,15 +86,16 @@ const dashboardData = {
       },
       candidate: {
         id: 3,
-        name: 'Sophie Martin',
+        name: 'Yassine Bouazizi',
         avatar: '/placeholder-user.jpg',
-        title: 'Développeuse Backend'
+        title: 'Développeur Backend'
       },
       date: '2023-05-10',
       status: 'interview'
     }
   ]
 };
+
 
 const CompanyDashboard = () => {
   const [tabValue, setTabValue] = useState(0);

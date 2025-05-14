@@ -33,68 +33,68 @@ import { Link } from "react-router-dom"
 const complaintsData = [
   {
     id: 1,
-    title: "Problème avec une offre d'emploi",
+    title: "Offre douteuse",
     category: "Offre d'emploi",
     user: {
       id: 1,
-      name: "Thomas Dubois",
+      name: "Ahmed Ben Ali",
     },
     date: "2023-05-15",
     status: "pending",
     description:
-      "J'ai postulé à une offre d'emploi qui semble frauduleuse. L'entreprise demande des informations personnelles avant même un entretien.",
+        "J'ai postulé à une offre publiée par TunisTech, mais ils demandent des frais pour l'entretien.",
   },
   {
     id: 2,
-    title: "Comportement inapproprié d'un recruteur",
+    title: "Recruteur impoli",
     category: "Recruteur",
     user: {
       id: 2,
-      name: "Julie Lefebvre",
+      name: "Fatma Trabelsi",
     },
     date: "2023-05-10",
     status: "in_progress",
     description:
-      "Lors d'un entretien, le recruteur a posé des questions discriminatoires concernant ma situation familiale.",
+        "Le recruteur de SfaxDigital m'a raccroché au nez sans explication après une question sur le salaire.",
   },
   {
     id: 3,
-    title: "Problème technique lors de la candidature",
+    title: "Erreur technique",
     category: "Technique",
     user: {
       id: 3,
-      name: "Sophie Martin",
+      name: "Walid Khemiri",
     },
     date: "2023-05-05",
     status: "resolved",
     description:
-      "Je n'arrive pas à soumettre ma candidature pour l'offre #12345. Le système affiche une erreur à chaque tentative.",
+        "Je n'ai pas pu postuler à une offre chez DjerbaDesign, le bouton 'Postuler' ne fonctionne pas.",
   },
   {
     id: 4,
-    title: "Avis frauduleux sur mon entreprise",
+    title: "Avis mensongers",
     category: "Avis",
     user: {
-      id: 6,
-      name: "TechCorp",
+      id: 4,
+      name: "MarketingTunisie",
     },
     date: "2023-05-12",
     status: "pending",
     description:
-      "Plusieurs avis négatifs ont été publiés sur notre entreprise par ce qui semble être la même personne utilisant différents comptes.",
+        "Nous avons remarqué plusieurs avis négatifs non justifiés postés par des comptes anonymes.",
   },
   {
     id: 5,
-    title: "Problème d'affichage sur mobile",
+    title: "Site lent",
     category: "Technique",
     user: {
-      id: 4,
-      name: "Marc Dupont",
+      id: 5,
+      name: "Sana Mbarek",
     },
     date: "2023-05-08",
     status: "rejected",
     description:
-      "L'application mobile ne fonctionne pas correctement sur mon appareil Android. Les offres ne s'affichent pas.",
+        "Le site est très lent lorsque je consulte les offres de DataCarthage depuis mon téléphone.",
   },
 ]
 

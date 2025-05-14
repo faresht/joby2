@@ -3,69 +3,70 @@ import { Container, Typography, Grid, Card, CardContent, CardActions, Button, Te
 import { Link } from 'react-router-dom';
 import { Business, LocationOn, People } from '@mui/icons-material';
 
-// Données fictives pour les entreprises
+// Données fictives pour les entreprises tunisiennes
 const companiesData = [
   {
     id: 1,
-    name: 'TechCorp',
+    name: 'TunisTech',
     logo: '/placeholder.svg',
     industry: 'Technologie',
-    location: 'Paris',
+    location: 'Tunis',
     size: '50-200 employés',
-    description: 'TechCorp est une entreprise innovante spécialisée dans le développement de solutions web et mobiles.',
+    description: 'TunisTech développe des solutions digitales pour les entreprises locales et internationales.',
     rating: 4.5,
-    reviewsCount: 24,
-    jobsCount: 5
+    reviewsCount: 32,
+    jobsCount: 6
   },
   {
     id: 2,
-    name: 'WebSolutions',
+    name: 'SfaxDigital',
     logo: '/placeholder.svg',
     industry: 'Technologie',
-    location: 'Lyon',
+    location: 'Sfax',
     size: '10-50 employés',
-    description: 'WebSolutions propose des services de développement web et de conseil en transformation digitale.',
+    description: 'SfaxDigital propose des services web, mobile et cloud pour les startups tunisiennes.',
     rating: 4.2,
+    reviewsCount: 21,
+    jobsCount: 4
+  },
+  {
+    id: 3,
+    name: 'StudioDesign',
+    logo: '/placeholder.svg',
+    industry: 'Design',
+    location: 'Sousse',
+    size: '1-10 employés',
+    description: 'StudioDesign est spécialisé dans la création graphique, UX/UI et branding.',
+    rating: 4.8,
+    reviewsCount: 11,
+    jobsCount: 2
+  },
+  {
+    id: 4,
+    name: 'MarketNow',
+    logo: '/placeholder.svg',
+    industry: 'Marketing',
+    location: 'Nabeul',
+    size: '10-50 employés',
+    description: 'MarketNow aide les PME tunisiennes à booster leur présence digitale avec des campagnes ciblées.',
+    rating: 4.0,
     reviewsCount: 18,
     jobsCount: 3
   },
   {
-    id: 3,
-    name: 'DesignStudio',
-    logo: '/placeholder.svg',
-    industry: 'Design',
-    location: 'Marseille',
-    size: '1-10 employés',
-    description: 'DesignStudio est une agence de design spécialisée dans l\'UX/UI et l\'identité visuelle.',
-    rating: 4.8,
-    reviewsCount: 12,
-    jobsCount: 1
-  },
-  {
-    id: 4,
-    name: 'AgenceWeb',
-    logo: '/placeholder.svg',
-    industry: 'Marketing',
-    location: 'Bordeaux',
-    size: '10-50 employés',
-    description: 'AgenceWeb est une agence digitale offrant des services de marketing et de développement web.',
-    rating: 3.9,
-    reviewsCount: 15,
-    jobsCount: 2
-  },
-  {
     id: 5,
-    name: 'DataInsight',
+    name: 'DataPlus',
     logo: '/placeholder.svg',
     industry: 'Data',
-    location: 'Toulouse',
+    location: 'Monastir',
     size: '50-200 employés',
-    description: 'DataInsight est spécialisée dans l\'analyse de données et l\'intelligence artificielle.',
+    description: 'DataPlus est une entreprise innovante en data science et intelligence artificielle basée à Monastir.',
     rating: 4.6,
-    reviewsCount: 20,
-    jobsCount: 4
+    reviewsCount: 27,
+    jobsCount: 5
   },
 ];
+
 
 const Companies = () => {
   const [searchTerm, setSearchTerm] = useState('');

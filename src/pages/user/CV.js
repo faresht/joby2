@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Container, Typography, Paper, Box, Button, TextField, Grid, Divider, IconButton } from '@mui/material';
 import { Add, Delete, Save, Print, Download } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
 const CV = () => {
   const [experiences, setExperiences] = useState([
     {
       id: 1,
       title: 'Développeur Full Stack',
-      company: 'TechCorp',
-      location: 'Paris',
+      company: 'TunisTech',
+      location: 'Tunis',
       startDate: '2021-01',
       endDate: '',
       current: true,
@@ -18,8 +17,8 @@ const CV = () => {
     {
       id: 2,
       title: 'Développeur Frontend',
-      company: 'WebAgency',
-      location: 'Lyon',
+      company: 'SfaxDigital',
+      location: 'Sfax',
       startDate: '2019-03',
       endDate: '2020-12',
       current: false,
@@ -31,8 +30,8 @@ const CV = () => {
     {
       id: 1,
       degree: 'Master en Informatique',
-      school: 'Université de Paris',
-      location: 'Paris',
+      school: 'Université de Tunis',
+      location: 'Tunis',
       startDate: '2017',
       endDate: '2019',
       description: 'Spécialisation en développement web et applications mobiles.'
@@ -40,13 +39,14 @@ const CV = () => {
     {
       id: 2,
       degree: 'Licence en Informatique',
-      school: 'Université de Lyon',
-      location: 'Lyon',
+      school: 'Université de Sfax',
+      location: 'Sfax',
       startDate: '2014',
       endDate: '2017',
       description: 'Formation générale en informatique.'
     }
   ]);
+
 
   const addExperience = () => {
     const newId = experiences.length > 0 ? Math.max(...experiences.map(exp => exp.id)) + 1 : 1;

@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 
 // Données fictives pour les entreprises et utilisateurs
 const companiesData = [
-  { id: 1, name: 'TechCorp', type: 'company' },
-  { id: 2, name: 'WebSolutions', type: 'company' },
-  { id: 3, name: 'DesignStudio', type: 'company' },
-  { id: 4, name: 'AgenceWeb', type: 'company' },
-  { id: 5, name: 'DataInsight', type: 'company' }
+  { id: 1, name: 'TunisTech', type: 'company' },
+  { id: 2, name: 'SfaxDigital', type: 'company' },
+  { id: 3, name: 'MedinaDesign', type: 'company' },
+  { id: 4, name: 'BizDev', type: 'company' },
+  { id: 5, name: 'DataTunisie', type: 'company' }
 ];
 
 const usersData = [
-  { id: 1, name: 'Thomas Dubois', type: 'user' },
-  { id: 2, name: 'Julie Lefebvre', type: 'user' },
-  { id: 3, name: 'Sophie Martin', type: 'user' },
-  { id: 4, name: 'Marc Dupont', type: 'user' },
-  { id: 5, name: 'Alexandre Petit', type: 'user' }
+  { id: 1, name: 'Ahmed Ben Ali', type: 'user' },
+  { id: 2, name: 'Samar Gharbi', type: 'user' },
+  { id: 3, name: 'Mohamed Mbarek', type: 'user' },
+  { id: 4, name: 'Rania Slim', type: 'user' },
+  { id: 5, name: 'Youssef Jaziri', type: 'user' }
 ];
 
 const systemData = [

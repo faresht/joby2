@@ -10,7 +10,7 @@ const topicData = {
   content: 'Bonjour à tous,\n\nJe suis actuellement à la recherche d\'un emploi dans le secteur tech et je souhaiterais avoir vos conseils pour optimiser mon CV. Quels sont les éléments essentiels à mettre en avant ? Comment structurer mon CV pour qu\'il soit attractif pour les recruteurs tech ?\n\nMerci d\'avance pour vos conseils !',
   author: {
     id: 1,
-    name: 'Thomas Dubois',
+    name: 'Yassine Bouaziz',
     avatar: '/placeholder-user.jpg'
   },
   category: 'CV et Candidatures',
@@ -22,7 +22,7 @@ const topicData = {
       content: 'Pour un CV dans le secteur tech, je te conseille de mettre en avant tes compétences techniques en premier lieu. Fais une section dédiée avec les langages, frameworks et outils que tu maîtrises. N\'hésite pas à mentionner tes projets personnels et ton GitHub si tu en as un.',
       author: {
         id: 2,
-        name: 'Julie Lefebvre',
+        name: 'Ahmed Ben Ali',
         avatar: '/placeholder-user.jpg'
       },
       date: '2023-05-10T15:45:00',
@@ -34,7 +34,7 @@ const topicData = {
       content: 'Je suis d\'accord avec Julie. J\'ajouterais qu\'il est important de personnaliser ton CV pour chaque offre d\'emploi. Analyse bien l\'offre et mets en avant les compétences qui correspondent le mieux. Aussi, n\'oublie pas de quantifier tes réalisations (ex: "Amélioration des performances de 30%").',
       author: {
         id: 3,
-        name: 'Sophie Martin',
+        name: 'Fatma Zahra',
         avatar: '/placeholder-user.jpg'
       },
       date: '2023-05-11T09:20:00',
@@ -46,7 +46,7 @@ const topicData = {
       content: 'Un autre conseil : garde ton CV concis (1-2 pages maximum). Les recruteurs tech reçoivent beaucoup de candidatures et n\'ont pas le temps de lire des CV trop longs. Va à l\'essentiel et mets en avant ce qui te différencie des autres candidats.',
       author: {
         id: 4,
-        name: 'Marc Dupont',
+        name: 'Sofia Khlifi',
         avatar: '/placeholder-user.jpg'
       },
       date: '2023-05-11T14:10:00',

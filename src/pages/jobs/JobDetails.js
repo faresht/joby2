@@ -9,13 +9,13 @@ const jobData = {
   title: 'Développeur Frontend React',
   company: {
     id: 1,
-    name: 'TechCorp',
+    name: 'TunisTech',
     logo: '/placeholder.svg',
-    location: 'Paris'
+    location: 'Tunis'
   },
-  location: 'Paris',
+  location: 'Tunis',
   type: 'CDI',
-  salary: '45K - 55K €',
+  salary: '3K - 4K TND',
   date: '2023-05-10',
   description: 'Nous recherchons un développeur frontend expérimenté pour rejoindre notre équipe dynamique. Vous serez responsable de la conception et du développement d\'interfaces utilisateur réactives et intuitives pour nos applications web.',
   responsibilities: [
@@ -71,247 +71,247 @@ const JobDetail = () => {
   };
 
   return (
-    <Container>
-      <Grid container spacing={4} sx={{ mt: 2, mb: 4 }}>
-        {/* Colonne principale - Détails de l'offre */}
-        <Grid item xs={12} md={8}>
-          <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
-                <Box>
-                  <Typography variant="h4" component="h1" gutterBottom>
-                    {jobData.title}
-                  </Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Business fontSize="small" sx={{ mr: 0.5 }} />
-                      <Typography variant="body1" component={Link} to={`/companies/${jobData.company.id}`} sx={{ textDecoration: 'none' }}>
-                        {jobData.company.name}
-                      </Typography>
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <LocationOn fontSize="small" sx={{ mr: 0.5 }} />
-                      <Typography variant="body1">
-                        {jobData.location}
-                      </Typography>
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <AccessTime fontSize="small" sx={{ mr: 0.5 }} />
-                      <Typography variant="body1">
-                        Publiée le {formatDate(jobData.date)}
-                      </Typography>
+      <Container>
+        <Grid container spacing={4} sx={{ mt: 2, mb: 4 }}>
+          {/* Colonne principale - Détails de l'offre */}
+          <Grid item xs={12} md={8}>
+            <Card>
+              <CardContent>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+                  <Box>
+                    <Typography variant="h4" component="h1" gutterBottom>
+                      {jobData.title}
+                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Business fontSize="small" sx={{ mr: 0.5 }} />
+                        <Typography variant="body1" component={Link} to={`/companies/${jobData.company.id}`} sx={{ textDecoration: 'none' }}>
+                          {jobData.company.name}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <LocationOn fontSize="small" sx={{ mr: 0.5 }} />
+                        <Typography variant="body1">
+                          {jobData.location}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <AccessTime fontSize="small" sx={{ mr: 0.5 }} />
+                        <Typography variant="body1">
+                          Publiée le {formatDate(jobData.date)}
+                        </Typography>
+                      </Box>
                     </Box>
                   </Box>
+                  <Button
+                      variant="contained"
+                      size="large"
+                      onClick={handleOpenDialog}
+                  >
+                    Postuler
+                  </Button>
                 </Box>
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={handleOpenDialog}
-                >
-                  Postuler
-                </Button>
-              </Box>
-              
-              <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
-                <Chip icon={<Work />} label={jobData.type} color="primary" variant="outlined" />
-                <Chip icon={<AttachMoney />} label={jobData.salary} variant="outlined" />
-              </Box>
-              
-              <Typography variant="h6" gutterBottom>
-                Description du poste
-              </Typography>
-              <Typography variant="body1" paragraph>
-                {jobData.description}
-              </Typography>
-              
-              <Typography variant="h6" gutterBottom>
-                Responsabilités
-              </Typography>
-              <List>
-                {jobData.responsibilities.map((item, index) => (
-                  <ListItem key={index} sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 30 }}>
-                      <CheckCircle color="primary" fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              
-              <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-                Prérequis
-              </Typography>
-              <List>
-                {jobData.requirements.map((item, index) => (
-                  <ListItem key={index} sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 30 }}>
-                      <CheckCircle color="primary" fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              
-              <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-                Avantages
-              </Typography>
-              <List>
-                {jobData.benefits.map((item, index) => (
-                  <ListItem key={index} sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 30 }}>
-                      <CheckCircle color="primary" fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              
-              <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-                Compétences requises
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
-                {jobData.skills.map((skill, index) => (
-                  <Chip key={index} label={skill} />
-                ))}
-              </Box>
-              
-              <Divider sx={{ my: 3 }} />
-              
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
-                  <Typography variant="body2" color="text.secondary">
-                    {jobData.applications} candidature(s) • {jobData.views} vue(s)
-                  </Typography>
+
+                <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
+                  <Chip icon={<Work />} label={jobData.type} color="primary" variant="outlined" />
+                  <Chip icon={<AttachMoney />} label={jobData.salary} variant="outlined" />
                 </Box>
+
+                <Typography variant="h6" gutterBottom>
+                  Description du poste
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  {jobData.description}
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                  Responsabilités
+                </Typography>
+                <List>
+                  {jobData.responsibilities.map((item, index) => (
+                      <ListItem key={index} sx={{ py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                          <CheckCircle color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                  ))}
+                </List>
+
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Prérequis
+                </Typography>
+                <List>
+                  {jobData.requirements.map((item, index) => (
+                      <ListItem key={index} sx={{ py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                          <CheckCircle color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                  ))}
+                </List>
+
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Avantages
+                </Typography>
+                <List>
+                  {jobData.benefits.map((item, index) => (
+                      <ListItem key={index} sx={{ py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                          <CheckCircle color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                  ))}
+                </List>
+
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Compétences requises
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
+                  {jobData.skills.map((skill, index) => (
+                      <Chip key={index} label={skill} />
+                  ))}
+                </Box>
+
+                <Divider sx={{ my: 3 }} />
+
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Box>
+                    <Typography variant="body2" color="text.secondary">
+                      {jobData.applications} candidature(s) • {jobData.views} vue(s)
+                    </Typography>
+                  </Box>
+                  <Button
+                      variant="contained"
+                      onClick={handleOpenDialog}
+                  >
+                    Postuler
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Colonne latérale - Informations sur l'entreprise */}
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  À propos de l'entreprise
+                </Typography>
+
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Avatar
+                      src={jobData.company.logo}
+                      variant="rounded"
+                      sx={{ width: 60, height: 60, mr: 2 }}
+                  >
+                    <Business sx={{ fontSize: 40 }} />
+                  </Avatar>
+                  <Box>
+                    <Typography variant="subtitle1" component={Link} to={`/companies/${jobData.company.id}`} sx={{ textDecoration: 'none' }}>
+                      {jobData.company.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {jobData.company.location}
+                    </Typography>
+                  </Box>
+                </Box>
+
                 <Button
-                  variant="contained"
-                  onClick={handleOpenDialog}
+                    variant="outlined"
+                    fullWidth
+                    component={Link}
+                    to={`/companies/${jobData.company.id}`}
                 >
-                  Postuler
+                  Voir le profil de l'entreprise
                 </Button>
-              </Box>
-            </CardContent>
-          </Card>
+
+                <Divider sx={{ my: 3 }} />
+
+                <Typography variant="body2" color="text.secondary">
+                  Partagez cette offre:
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
+                  <Button variant="outlined" size="small">
+                    LinkedIn
+                  </Button>
+                  <Button variant="outlined" size="small">
+                    Twitter
+                  </Button>
+                  <Button variant="outlined" size="small">
+                    Email
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+
+            <Card sx={{ mt: 3 }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  Offres similaires
+                </Typography>
+
+                <List>
+                  <ListItem component={Link} to="/jobs/2" sx={{ textDecoration: 'none', color: 'inherit' }}>
+                    <ListItemText
+                        primary="Développeur Frontend Vue.js"
+                        secondary="WebSolutions - Sfax"
+                    />
+                  </ListItem>
+                  <Divider component="li" />
+                  <ListItem component={Link} to="/jobs/3" sx={{ textDecoration: 'none', color: 'inherit' }}>
+                    <ListItemText
+                        primary="Développeur React Native"
+                        secondary="MobileApp - Tunis"
+                    />
+                  </ListItem>
+                  <Divider component="li" />
+                  <ListItem component={Link} to="/jobs/4" sx={{ textDecoration: 'none', color: 'inherit' }}>
+                    <ListItemText
+                        primary="Développeur Frontend Angular"
+                        secondary="DataTech - Sousse"
+                    />
+                  </ListItem>
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-        
-        {/* Colonne latérale - Informations sur l'entreprise */}
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                À propos de l'entreprise
-              </Typography>
-              
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Avatar
-                  src={jobData.company.logo}
-                  variant="rounded"
-                  sx={{ width: 60, height: 60, mr: 2 }}
-                >
-                  <Business sx={{ fontSize: 40 }} />
-                </Avatar>
-                <Box>
-                  <Typography variant="subtitle1" component={Link} to={`/companies/${jobData.company.id}`} sx={{ textDecoration: 'none' }}>
-                    {jobData.company.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {jobData.company.location}
-                  </Typography>
-                </Box>
-              </Box>
-              
-              <Button
-                variant="outlined"
+
+        {/* Dialogue de candidature */}
+        <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="sm" fullWidth>
+          <DialogTitle>Postuler à l'offre: {jobData.title}</DialogTitle>
+          <DialogContent>
+            <Typography variant="body1" paragraph>
+              Votre CV et votre profil seront envoyés avec votre candidature. Vous pouvez ajouter un message personnalisé ci-dessous.
+            </Typography>
+            <TextField
+                autoFocus
+                margin="dense"
+                id="message"
+                label="Message (optionnel)"
+                type="text"
                 fullWidth
-                component={Link}
-                to={`/companies/${jobData.company.id}`}
-              >
-                Voir le profil de l'entreprise
-              </Button>
-              
-              <Divider sx={{ my: 3 }} />
-              
-              <Typography variant="body2" color="text.secondary">
-                Partagez cette offre:
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
-                <Button variant="outlined" size="small">
-                  LinkedIn
-                </Button>
-                <Button variant="outlined" size="small">
-                  Twitter
-                </Button>
-                <Button variant="outlined" size="small">
-                  Email
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-          
-          <Card sx={{ mt: 3 }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Offres similaires
-              </Typography>
-              
-              <List>
-                <ListItem component={Link} to="/jobs/2" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                  <ListItemText
-                    primary="Développeur Frontend Vue.js"
-                    secondary="WebSolutions - Lyon"
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem component={Link} to="/jobs/3" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                  <ListItemText
-                    primary="Développeur React Native"
-                    secondary="MobileApp - Paris"
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem component={Link} to="/jobs/4" sx={{ textDecoration: 'none', color: 'inherit' }}>
-                  <ListItemText
-                    primary="Développeur Frontend Angular"
-                    secondary="DataTech - Bordeaux"
-                  />
-                </ListItem>
-              </List>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-      
-      {/* Dialogue de candidature */}
-      <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="sm" fullWidth>
-        <DialogTitle>Postuler à l'offre: {jobData.title}</DialogTitle>
-        <DialogContent>
-          <Typography variant="body1" paragraph>
-            Votre CV et votre profil seront envoyés avec votre candidature. Vous pouvez ajouter un message personnalisé ci-dessous.
-          </Typography>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="message"
-            label="Message (optionnel)"
-            type="text"
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog} startIcon={<Cancel />}>
-            Annuler
-          </Button>
-          <Button onClick={handleSubmitApplication} variant="contained" startIcon={<Send />}>
-            Envoyer ma candidature
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </Container>
+                multiline
+                rows={4}
+                variant="outlined"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDialog} startIcon={<Cancel />}>
+              Annuler
+            </Button>
+            <Button onClick={handleSubmitApplication} variant="contained" startIcon={<Send />}>
+              Envoyer ma candidature
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Container>
   );
 };
 

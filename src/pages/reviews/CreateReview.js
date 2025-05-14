@@ -5,21 +5,20 @@ import { Link, useLocation } from 'react-router-dom';
 
 // Données fictives pour les entreprises et utilisateurs
 const companiesData = [
-  { id: 1, name: 'TechCorp', type: 'Entreprise' },
-  { id: 2, name: 'WebSolutions', type: 'Entreprise' },
-  { id: 3, name: 'DesignStudio', type: 'Entreprise' },
-  { id: 4, name: 'AgenceWeb', type: 'Entreprise' },
-  { id: 5, name: 'DataInsight', type: 'Entreprise' }
+  { id: 1, name: 'TunisTech', type: 'Entreprise' },
+  { id: 2, name: 'SfaxDigital', type: 'Entreprise' },
+  { id: 3, name: 'BizCraft', type: 'Entreprise' },
+  { id: 4, name: 'CodeLab', type: 'Entreprise' },
+  { id: 5, name: 'CreativeMinds', type: 'Entreprise' }
 ];
 
 const usersData = [
-  { id: 1, name: 'Thomas Dubois', type: 'Freelance' },
-  { id: 2, name: 'Julie Lefebvre', type: 'Développeur' },
-  { id: 3, name: 'Sophie Martin', type: 'Designer' },
-  { id: 4, name: 'Marc Dupont', type: 'Chef de projet' },
-  { id: 5, name: 'Alexandre Petit', type: 'Consultant' }
+  { id: 1, name: 'Amine Ben Ali', type: 'Freelance' },
+  { id: 2, name: 'Khaled Baccouche', type: 'Développeur Backend' },
+  { id: 3, name: 'Hiba Jouini', type: 'Designer UI/UX' },
+  { id: 4, name: 'Mehdi Gharbi', type: 'Chef de projet' },
+  { id: 5, name: 'Sarra Chouikha', type: 'Consultante en stratégie' }
 ];
-
 const CreateReview = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);

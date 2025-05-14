@@ -4,19 +4,19 @@ import { Edit, Delete, Visibility, Search, FilterList } from '@mui/icons-materia
 import { Link } from 'react-router-dom';
 
 // Données fictives pour les utilisateurs
+// Données fictives pour les utilisateurs avec des noms arabes
 const usersData = [
-  { id: 1, name: 'Thomas Dubois', email: 'thomas.dubois@example.com', type: 'user', status: 'active', registrationDate: '2023-05-01' },
-  { id: 2, name: 'Julie Lefebvre', email: 'julie.lefebvre@example.com', type: 'user', status: 'active', registrationDate: '2023-05-02' },
-  { id: 3, name: 'Sophie Martin', email: 'sophie.martin@example.com', type: 'user', status: 'inactive', registrationDate: '2023-05-03' },
-  { id: 4, name: 'Marc Dupont', email: 'marc.dupont@example.com', type: 'user', status: 'active', registrationDate: '2023-05-04' },
-  { id: 5, name: 'Alexandre Petit', email: 'alexandre.petit@example.com', type: 'user', status: 'active', registrationDate: '2023-05-05' },
-  { id: 6, name: 'TechCorp', email: 'contact@techcorp.com', type: 'company', status: 'active', registrationDate: '2023-05-06' },
-  { id: 7, name: 'WebSolutions', email: 'contact@websolutions.com', type: 'company', status: 'active', registrationDate: '2023-05-07' },
-  { id: 8, name: 'DesignStudio', email: 'contact@designstudio.com', type: 'company', status: 'active', registrationDate: '2023-05-08' },
-  { id: 9, name: 'AgenceWeb', email: 'contact@agenceweb.com', type: 'company', status: 'inactive', registrationDate: '2023-05-09' },
-  { id: 10, name: 'DataInsight', email: 'contact@datainsight.com', type: 'company', status: 'active', registrationDate: '2023-05-10' }
+  { id: 1, name: 'Ahmed Ben Ali', email: 'ahmed.benali@example.com', type: 'user', status: 'active', registrationDate: '2023-05-01' },
+  { id: 2, name: 'Fatima Zahra', email: 'fatima.zahra@example.com', type: 'user', status: 'active', registrationDate: '2023-05-02' },
+  { id: 3, name: 'Youssef El Amrani', email: 'youssef.elamrani@example.com', type: 'user', status: 'inactive', registrationDate: '2023-05-03' },
+  { id: 4, name: 'Khadija Lahlou', email: 'khadija.lahlou@example.com', type: 'user', status: 'active', registrationDate: '2023-05-04' },
+  { id: 5, name: 'Omar Naciri', email: 'omar.naciri@example.com', type: 'user', status: 'active', registrationDate: '2023-05-05' },
+  { id: 6, name: 'InformatiquePro', email: 'contact@informatiquepro.com', type: 'company', status: 'active', registrationDate: '2023-05-06' },
+  { id: 7, name: 'WebMaroc', email: 'contact@webmaroc.com', type: 'company', status: 'active', registrationDate: '2023-05-07' },
+  { id: 8, name: 'DesignMaghreb', email: 'contact@designmaghreb.com', type: 'company', status: 'active', registrationDate: '2023-05-08' },
+  { id: 9, name: 'AgenceDigitale', email: 'contact@agencedigitale.com', type: 'company', status: 'inactive', registrationDate: '2023-05-09' },
+  { id: 10, name: 'DataAnalyse', email: 'contact@dataanalyse.com', type: 'company', status: 'active', registrationDate: '2023-05-10' }
 ];
-
 const UsersList = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
