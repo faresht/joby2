@@ -9,7 +9,7 @@ const EditProfile = () => {
     lastName: 'Ben Ali',
     title: 'Développeur Web',
     location: 'Tunis, Tunisie',
-    email: 'amine.benali@example.com',
+    email: 'amine.benali@gmail.com',
     phone: '+216 55 44 33 22',
     about: 'Développeur web passionné avec plus de 4 ans d\'expérience, spécialisé en React et Node.js. Toujours à la recherche de nouveaux défis et technologies à explorer.',
     skills: ['React', 'Node.js', 'JavaScript', 'MongoDB', 'Express', 'HTML/CSS', 'Git', 'Docker'],
