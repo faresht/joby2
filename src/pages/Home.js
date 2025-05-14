@@ -413,20 +413,7 @@ const Home = () => {
                 </Container>
             </Box>
 
-            {/* Footer */}
-            <Box
-                sx={{
-                    bgcolor: "#f8f9fa",
-                    py: 4,
-                    borderTop: "1px solid #eaeaea",
-                }}
-            >
-                <Container maxWidth="lg">
-                    <Typography variant="body2" color="text.secondary" textAlign="center">
-                        © {new Date().getFullYear()} Joby. Tous droits réservés.
-                    </Typography>
-                </Container>
-            </Box>
+           
         </Box>
     )
 }
